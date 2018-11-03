@@ -1,9 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-export class Home extends React.Component {
+export class Person extends React.Component {
     constructor(props) {
-        super();
+        super()
         this.state = {
             age: props.initialAge
         };
@@ -19,17 +19,17 @@ export class Home extends React.Component {
         return (
             <div>
                 <div className="col-sx-10 col-sm-6">
-                    <p>I'm { this.props.name } and my age is { this.state.age }</p>
+                    <p>I'm {this.props.name} and my age is {this.state.age}</p>
                 </div>
-                <div className="col-sx-5 col-sm-2">                    
-                    <button onClick={ this.onMakeOlder } className="btn btn-primary">Get older</button>
+                <div className="col-sx-5 col-sm-2">
+                    <button onClick={this.onMakeOlder} className="btn btn-primary">Get older</button>
                 </div>
             </div>
         );
     }
 }
 
-Home.propTypes = {
+Person.propTypes = {
     name: PropTypes.string,
     initialAge: PropTypes.number,
 }
