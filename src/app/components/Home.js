@@ -18,8 +18,15 @@ export class Home extends React.Component {
     render() {
         return (
             <div>
-                <p>I'm { this.props.name } and my age is { this.state.age }</p>
-                <button onClick={ this.onMakeOlder } className="btn btn-primary">Make me older!</button>
+                <div className="col-sx-10 col-sm-6">
+                    <p>I'm { this.props.name } and my age is { this.state.age }</p>
+                </div>
+                <div className="col-sx-5 col-sm-2">                    
+                    <button onClick={ this.onMakeOlder } className="btn btn-primary">Get older</button>
+                </div>
+                <div className="col-sx-5 col-sm-2">                    
+                    <button onClick={ this.props.greet } type="button" className="btn btn-info">Greet</button>
+                </div>
             </div>
         );
     }
@@ -27,5 +34,6 @@ export class Home extends React.Component {
 
 Home.propTypes = {
     name: PropTypes.string,
-    initialAge: PropTypes.number
+    initialAge: PropTypes.number,
+    greet: PropTypes.func
 }
