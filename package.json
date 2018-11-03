@@ -10,5 +10,9 @@
     "reactjs"
   ],
   "author": "Rony Cesana",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "react": "^16.6.0",
+    "react-dom": "^16.6.0"
+  }
 }
