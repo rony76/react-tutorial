@@ -11,13 +11,15 @@ var config = {
         publicPath: "/app/"
     },
     module: {
-        loaders: [
+        rules: [
             {
-                test: /\.js?/,
-                include: SRC_DIR,
-                loader: "babel-loader",
-                query: {
-                    presets: ["react", "es2015", "stage-2"]
+                test: /\.m?js$/,
+                exclude: /(node_modules|bower_components)/,
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['@babel/preset-env']
+                    }
                 }
             }
         ]
