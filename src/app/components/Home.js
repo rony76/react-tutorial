@@ -9,7 +9,7 @@ export class Home extends React.Component {
         };
     }
 
-    onMakeOlder() {
+    onMakeOlder = () => {
         this.setState({
             age: this.state.age + 1
         });
@@ -19,7 +19,7 @@ export class Home extends React.Component {
         return (
             <div>
                 <p>I'm { this.props.name } and my age is { this.state.age }</p>
-                <button onClick={ () => this.onMakeOlder() } className="btn btn-primary">Make me older!</button>
+                <button onClick={ this.onMakeOlder } className="btn btn-primary">Make me older!</button>
             </div>
         );
     }
