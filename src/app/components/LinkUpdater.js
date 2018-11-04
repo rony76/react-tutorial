@@ -1,11 +1,12 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
-export class LinkUpdater extends Component {
+class LinkUpdater extends Component {
     constructor(props) {
         super();
         this.state = {
-            link: props.initialLink
+            link: props.homeLink
         }
     }
 
@@ -13,10 +14,6 @@ export class LinkUpdater extends Component {
         this.setState({
             link: e.target.value
         });
-    }
-
-    onUpdateButtonChange = () => {
-        this.props.changeLink(this.state.link);
     }
 
     render() {
@@ -34,7 +31,7 @@ export class LinkUpdater extends Component {
                     <button
                         type="button"
                         className="btn btn-primary"
-                        onClick={this.onUpdateButtonChange}>Update</button>
+                        onClick={() => this.props.updateHomeLink(this.state.link)}>Update</button>
                 </div>
             </div>
         )
@@ -45,3 +42,20 @@ LinkUpdater.propTypes = {
     changeLink: PropTypes.func,
     initialLink: PropTypes.string
 }
+
+const mapStateToProps = (state) => {
+    return {
+        homeLink: state.homeLink
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        updateHomeLink: (newLink) => dispatch({
+            type: 'MNU_UPDATE_HOME',
+            payload: newLink
+        })
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(LinkUpdater);

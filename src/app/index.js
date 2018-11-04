@@ -2,7 +2,7 @@ import React from "react";
 import { render } from "react-dom";
 import { BrowserRouter as Router , Route} from "react-router-dom";
 
-import { Root } from "./components/Root";
+import Root from "./components/Root";
 import { People } from "./components/People";
 import { User } from "./components/User";
 

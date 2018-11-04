@@ -1,19 +1,13 @@
 import React, { Component } from 'react'
-import { LinkUpdater } from './LinkUpdater';
+import LinkUpdater from './LinkUpdater';
 import { Header } from './Header';
 
-export class Root extends Component {
-    constructor() {
-        super();
-        this.state = {
-            homeLink: "Home"
-        }
-    }
+import { connect, Provider } from 'react-redux';
+import store from '../store';
 
-    onChangeLink = (newName) => {
-        this.setState({
-            homeLink: newName
-        });
+class Root extends Component {
+    constructor(props) {
+        super(props);
     }
 
     render() {
@@ -21,18 +15,39 @@ export class Root extends Component {
             <div className="container">
                 <div className="row">
                     <div className="col-xs-10 col-xs-offset-1">
-                        <Header homeLink={this.state.homeLink} />
+                        <Header homeLink={this.props.homeLink} />
                     </div>
                 </div>
 
-                { this.props.children }
+                {this.props.children}
 
                 <div className="row">
                     <div className="col-xs-10 col-xs-offset-1">
-                        <LinkUpdater initialLink={this.state.homeLink} changeLink={this.onChangeLink} />
+                        <LinkUpdater />
                     </div>
                 </div>
             </div>
         )
     }
 }
+
+const mapStateToProps = (state) => {
+    return {
+        homeLink: state.homeLink
+    };
+}
+
+const ConnectedRoot = connect(mapStateToProps)(Root);
+
+export default class ReduxAwareRoot extends Component {
+    render() {
+        return (
+            <Provider store={store}>
+                <ConnectedRoot>
+                    {this.props.children}
+                </ConnectedRoot>
+            </Provider>
+        )
+    }
+}
+

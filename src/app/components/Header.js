@@ -13,17 +13,13 @@ const SingleLink = ({ link, name }) => (
 );
 
 export const Header = (props) => {
-    console.log("In Header", props);
-    const linkData = [
-        {
-            name: props.homeLink,
-            link: "/people"
-        },
-        {
-            name: "User",
-            link: "/user/4353"
-        }
-    ];
+    const linkData = [{
+        name: props.homeLink,
+        link: "/people"
+    }, {
+        name: "User",
+        link: "/user/4353"
+    }];
 
     return (
         <nav className="navbar navbar-default">
