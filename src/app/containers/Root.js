@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import LinkUpdater from '../components/LinkUpdater'
 import { Header } from '../components/Header'
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router'
 
 class Root extends Component {
     constructor(props) {
@@ -35,5 +36,5 @@ const mapStateToProps = (state) => {
     };
 }
 
-export default connect(mapStateToProps)(Root)
+export default withRouter(connect(mapStateToProps)(Root))
 
