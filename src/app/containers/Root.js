@@ -1,9 +1,7 @@
 import React, { Component } from 'react'
-import LinkUpdater from './LinkUpdater';
-import { Header } from './Header';
-
-import { connect, Provider } from 'react-redux';
-import store from '../store';
+import LinkUpdater from '../components/LinkUpdater'
+import { Header } from '../components/Header'
+import { connect } from 'react-redux'
 
 class Root extends Component {
     constructor(props) {
@@ -37,17 +35,5 @@ const mapStateToProps = (state) => {
     };
 }
 
-const ConnectedRoot = connect(mapStateToProps)(Root);
-
-export default class ReduxAwareRoot extends Component {
-    render() {
-        return (
-            <Provider store={store}>
-                <ConnectedRoot>
-                    {this.props.children}
-                </ConnectedRoot>
-            </Provider>
-        )
-    }
-}
+export default connect(mapStateToProps)(Root)
 
